@@ -69,7 +69,17 @@ function createData() {
     .set({
       name: "Ana",
       lastname: "Mayorga",
-      email: "Ana@gmail.com"
+      email: "Ana@gmail.com",
+      addresslst: [
+        {
+          name: "house",
+          address: "Guanajuato 56"
+        },
+        {
+          name: "office",
+          address: "londres 23"
+        }
+      ]
     });
 
   db.collection("courses")
@@ -148,7 +158,7 @@ async function getByAgeAndOrder() {
     .collection("users")
     .where("genero", "==", "M")
     .where("age", "==", 26)
-    .get()
+    .get();
 
   users.forEach(user => {
     console.log(`ID => ${user.id}`);
@@ -159,9 +169,7 @@ async function getByAgeAndOrder() {
 async function getCourseAndroidJanuary() {
   console.log("Get Course Android January");
 
-  const courses = await db
-    .collectionGroup("season")
-    .get();
+  const courses = await db.collectionGroup("season").get();
 
   courses.forEach(user => {
     console.log(`ID => ${user.id}`);
